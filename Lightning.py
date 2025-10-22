@@ -1,3 +1,5 @@
+# This script applies Pytorch lightning to randomly generated data - just to check it works
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -56,7 +58,7 @@ class KappaLightning(LightningModule):
         self.log("val_loss", loss, on_step=False, on_epoch=True, prog_bar=True)
 
     def configure_optimizers(self): #pass model parameters and the learning rate
-        return torch.optim.Adam(self.parameters(), lr=self.hparams.lr)
+        return torch.optim.Adam(self.parameters(), lr=self.hparams.lr) #hparams used to rank runs
 
 class LossHistory(Callback):
     def __init__(self):
